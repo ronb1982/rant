@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Rant.UI.Controllers
+namespace RantApp.UI.Controllers
 {
     public class HomeController : Controller
     {

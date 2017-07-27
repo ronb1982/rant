@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace Rant.UI
+namespace RantApp.UI
 {
     public class FilterConfig
     {
