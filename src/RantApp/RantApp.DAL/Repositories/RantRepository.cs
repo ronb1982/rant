@@ -1,47 +1,103 @@
 ﻿using RantApp.BLL.Models;
+using RantApp.BLL.Interfaces;
+using RantApp.DAL.Contexts;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace RantApp.DAL.Repositories
 {
-    public class RantRepository : IDisposable
+    public class RantRepository : IRepository<Rant>
     {
-        public void DeleteRant(int rantId)
+        private static RantContext _context;
+
+        public RantRepository()
         {
-            throw new NotImplementedException();
+            _context = new RantContext();
+        }
+
+        public IQueryable<Rant> GetAll()
+        {
+            return _context.Rants;
+        }
+
+        public void Add(Rant entity)
+        {
+            try
+            {
+                _context.Rants.Add(entity);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Debug.Write(e.StackTrace);
+            }
+        }
+
+        public void Delete(Rant entity)
+        {
+            try
+            {
+                _context.Rants.Remove(entity);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Debug.Write(e.StackTrace);
+            }
+        }
+
+        public Rant GetById(int entityId)
+        {
+            Rant rant = null;
+
+            try
+            {
+                rant = _context.Rants.Find(entityId);
+            }
+            catch (Exception e)
+            {
+                Debug.Write(e.StackTrace);
+            }
+
+            return rant;
+        }
+
+        public void Update(Rant entity)
+        {
+            try
+            {
+                _context.Entry(entity).State = EntityState.Modified;
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Debug.Write(e.StackTrace);
+            }
+        }
+
+        private bool disposed = false;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    _context.Dispose();
+                }
+            }
+            this.disposed = true;
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
-        }
-
-        public Rant GetRantById(int rantId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Rant> GetRants()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void InsertRant(Rant rant)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Save()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateRant(Rant rant)
-        {
-            throw new NotImplementedException();
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

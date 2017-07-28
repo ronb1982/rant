@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Models\Rant.cs" />
     <Compile Include="Models\Reaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

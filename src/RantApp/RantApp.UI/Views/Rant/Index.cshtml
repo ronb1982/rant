@@ -1,0 +1,32 @@
+﻿@model RantApp.BLL.ViewModels.RantViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Rants</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>What people are talking about?</th>
+        <th>Posted on</th>
+    </tr>
+
+@foreach (var item in Model.Rants) {
+    <tr>
+
+
+        <td><a href="@Url.Action("GetRant", "Rant", new { id = item.RantId })">@item.Title</a></td>
+        <td>@item.PostDate</td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("View", "GetRant", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
