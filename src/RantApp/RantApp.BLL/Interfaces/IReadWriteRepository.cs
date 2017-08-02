@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace RantApp.BLL.Interfaces
 {
-    public interface IRepository<T> : IDisposable where T : class
+    public interface IReadWriteRepository<T> : IReadRepository<T>, IDisposable where T : class
     {
-        IQueryable<T> GetAll();
         void Add(T entity);
         void Delete(T entity);
         void Update(T entity);

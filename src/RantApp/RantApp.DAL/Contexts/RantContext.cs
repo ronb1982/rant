@@ -14,5 +14,6 @@ namespace RantApp.DAL.Contexts
 
         public DbSet<Rant> Rants { get; set; }
         public DbSet<Reaction> Reactions { get; set; }
+        public DbSet<Emotion> Emotions { get; set; }
     }
 }

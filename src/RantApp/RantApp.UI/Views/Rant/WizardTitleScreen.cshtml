@@ -1,0 +1,14 @@
+﻿@model RantApp.BLL.ViewModels.RantViewModel
+
+@using (Html.BeginForm("WizardTitleScreen", "Rant", FormMethod.Post))
+{
+    <div class="form-fields">
+        <p>I'm @Html.DropDownListFor(
+              m => m.Emotions.SelectedItemId,
+              Model.Emotions.EmotionItems, "Select your emotion...", new { id = "selected-item-id" })
+        @Html.TextBoxFor(m => m.CurrentRant.Title, new { id = "rant-title" })</p>
+    </div>
+    @Html.ValidationMessageFor(m => m.Emotions.SelectedItemId)
+    <br/>
+    <input class="btn-submit" type="submit" name="nextBtn" value='Next' />
+}

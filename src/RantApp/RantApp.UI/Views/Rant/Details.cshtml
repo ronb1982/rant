@@ -1,0 +1,28 @@
+﻿@model RantApp.BLL.Models.Rant
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<!--Add user photo and username here-->
+
+<div>
+    <h2>@Html.DisplayFor(m => m.Title)</h2>
+    <hr />
+    <p>@Html.DisplayFor(m => m.Description)</p>
+    <hr />
+
+    <div class="reactions">
+        <h3>Here's how people reacted:</h3>
+        @foreach (var item in Model.Reactions)
+        {
+            <em><strong>@item.Title</strong></em>
+            <p>@item.Response</p>
+            <p>Reacted on: @item.PostDate</p>
+            <hr/>
+        }
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Back to Rants", "Index", "Home")
+</p>

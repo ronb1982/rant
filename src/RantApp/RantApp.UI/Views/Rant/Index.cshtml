@@ -17,13 +17,11 @@
 
 @foreach (var item in Model.Rants) {
     <tr>
-
-
-        <td><a href="@Url.Action("GetRant", "Rant", new { id = item.RantId })">@item.Title</a></td>
+        <td><a href="@Url.Action("Details", "Rant", new { id = item.RantId })">@item.Title</a></td>
         <td>@item.PostDate</td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("View", "GetRant", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("View", "Details", new { id = item.RantId })
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>

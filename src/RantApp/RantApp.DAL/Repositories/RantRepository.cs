@@ -11,10 +11,8 @@ using System.Threading.Tasks;
 
 namespace RantApp.DAL.Repositories
 {
-    public class RantRepository : IRepository<Rant>
+    public class RantRepository : RepositoryBase, IReadWriteRepository<Rant>
     {
-        private static RantContext _context;
-
         public RantRepository()
         {
             _context = new RantContext();
@@ -78,20 +76,6 @@ namespace RantApp.DAL.Repositories
             {
                 Debug.Write(e.StackTrace);
             }
-        }
-
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    _context.Dispose();
-                }
-            }
-            this.disposed = true;
         }
 
         public void Dispose()

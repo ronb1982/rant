@@ -8,37 +8,52 @@ using System.Threading.Tasks;
 
 namespace RantApp.DAL.Contexts
 {
-    public class RantInitializer : DropCreateDatabaseAlways<RantContext>
+    public class RantInitializer : DropCreateDatabaseIfModelChanges<RantContext>
     {
         protected override void Seed(RantContext context)
         {
-            var rants = new List<Rant>
+            var emotions = new List<Emotion>()
+            {
+                new Emotion() { EmotionId = 1, EmotionType = "pissed off about" },
+                new Emotion() { EmotionId = 2, EmotionType = "confused about" },
+                new Emotion() { EmotionId = 3, EmotionType = "happy about" },
+                new Emotion() { EmotionId = 4, EmotionType = "frustrated with" },
+                new Emotion() { EmotionId = 5, EmotionType = "sad about" },
+                new Emotion() { EmotionId = 6, EmotionType = "tired of" }
+            };
+
+            emotions.ForEach(e => context.Emotions.Add(e));
+            context.SaveChanges();
+
+            var rants = new List<Rant>()
             {
                 new Rant()
                 {
-                    Title = "I'm pissed off about Donald Trump.",
+                    EmotionId = 1,
+                    Title = string.Format("I'm {0} Donald Trump.", emotions.FirstOrDefault(e => e.EmotionId == 1).EmotionType),
                     PostDate = new DateTime(2016, 8, 18, 15, 25, 36),
                     PictureUrl = "",
                     Description = "Trump is such an idiot! Does anyone agree?"
                 },
                 new Rant()
                 {
-                    Title = "I'm happy about winning the lotto.",
-                    PostDate = new DateTime(2017, 2, 3, 12, 02, 0),
-                    PictureUrl = "",
-                    Description = "How about winning the lotto on your first try? Not bad, eh?"
-                },
-                new Rant()
-                {
-                    Title = "I'm confused about my current relationship.",
+                    EmotionId = 2,
+                    Title = string.Format("I'm {0} my current relationship.", emotions.FirstOrDefault(e => e.EmotionId == 2).EmotionType),
                     PostDate = new DateTime(2017, 7, 27, 20, 55, 44),
                     PictureUrl = "",
                     Description = "Why isn't my relationship working out? I lived with my girlfriend for some many years!"
+                },
+                new Rant()
+                {
+                    EmotionId = 3,
+                    Title = string.Format("I'm {0} winning the lotto.", emotions.FirstOrDefault(e => e.EmotionId == 3).EmotionType),
+                    PostDate = new DateTime(2017, 2, 3, 12, 02, 0),
+                    PictureUrl = "",
+                    Description = "How about winning the lotto on your first try? Not bad, eh?"
                 }
             };
 
             rants.ForEach(r => context.Rants.Add(r));
-            context.SaveChanges();
 
             string reactionPrefix = "RE: ";
 
@@ -65,6 +80,7 @@ namespace RantApp.DAL.Contexts
             };
 
             reactions.ForEach(re => context.Reactions.Add(re));
+
             context.SaveChanges();
 
             base.Seed(context);

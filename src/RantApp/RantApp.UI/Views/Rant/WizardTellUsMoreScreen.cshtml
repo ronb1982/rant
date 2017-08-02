@@ -1,0 +1,13 @@
+﻿@model RantApp.BLL.ViewModels.RantViewModel
+
+@using (Html.BeginForm("WizardTellUsMoreScreen", "Rant", FormMethod.Post))
+{
+    <div class="form-fields">
+        @Html.LabelFor(m => m.CurrentRant.Description, "Tell us more about it.")
+        @Html.TextAreaFor(m => m.CurrentRant.Description)
+    </div>
+    @Html.ValidationMessageFor(m => m.CurrentRant.Description)
+    <br />
+    <input type="submit" name="previousBtn" value="Previous" />
+    <input type="submit" name="nextBtn" value="Next" />
+}
