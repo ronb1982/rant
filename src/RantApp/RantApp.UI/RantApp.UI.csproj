@@ -170,6 +170,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -195,9 +197,10 @@
     <Content Include="Views\Rant\Index.cshtml" />
     <Content Include="Views\Rant\Details.cshtml" />
     <Content Include="Views\Rant\Create.cshtml" />
-    <Content Include="Views\Rant\WizardTitleScreen.cshtml" />
-    <Content Include="Views\Rant\WizardTellUsMoreScreen.cshtml" />
-    <Content Include="Views\Rant\WizardReactionTypeExpectedScreen.cshtml" />
+    <Content Include="Views\Rant\_WizardTitleScreen.cshtml" />
+    <Content Include="Views\Rant\_WizardTellUsMoreScreen.cshtml" />
+    <Content Include="Views\Rant\_WizardReactionTypeExpectedScreen.cshtml" />
+    <Content Include="Views\Rant\_WizardSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

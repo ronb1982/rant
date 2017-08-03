@@ -1,0 +1,14 @@
+﻿@model RantApp.BLL.ViewModels.RantViewModel
+
+@Html.ValidationSummary(false, "Please correct the following errors and try again.", new { @class = "text-danger" })
+
+@using (Ajax.BeginForm("_WizardReactionTypeExpectedScreen", "Rant", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "wizard-views" }))
+{
+    <div class="form-fields">
+        @Html.LabelFor(m => m.CurrentRant.ExpectedReactionRequest, "How do you want people to respond to this?")
+        @Html.TextAreaFor(m => m.CurrentRant.ExpectedReactionRequest, new { style = "width: 33%" })
+    </div>
+    <br />
+    <input type="submit" name="previousBtn" value="Previous" />
+    <input type="submit" name="nextBtn" value="Next" />
+}

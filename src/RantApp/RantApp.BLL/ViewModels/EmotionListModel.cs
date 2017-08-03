@@ -7,12 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Diagnostics;
+using System.ComponentModel.DataAnnotations;
 
 namespace RantApp.BLL.ViewModels
 {
     public class EmotionListModel
     {
+        [Required(ErrorMessage = "OK, let's try to select an emotion first.")]
         public int SelectedItemId { get; set; }
+
         public IList<SelectListItem> EmotionItems { get; set; }
         private static IReadRepository<Emotion> _readRepository;
 

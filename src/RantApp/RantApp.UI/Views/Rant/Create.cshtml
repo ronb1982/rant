@@ -24,9 +24,9 @@
         </div>
     </div>-->
 
-    <div id="wizard-views"></div>
-
-    @Html.Action(Model.PartialViewName, "Rant")
+    <div id="wizard-views">
+        @Html.Action("_WizardTitleScreen", Model)
+    </div>
 </div>
 
 <div>

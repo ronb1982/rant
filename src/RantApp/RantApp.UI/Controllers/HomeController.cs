@@ -19,7 +19,10 @@ namespace RantApp.UI.Controllers
         public ActionResult Index()
         {
             RantViewModel viewModel = new RantViewModel(_repository);
-            viewModel.Rants = viewModel.GetRants();
+            viewModel.Rants = viewModel.GetRants()
+                .OrderByDescending(r => r.PostDate)
+                .ThenBy(r => r.Title)
+                .ToList();
 
             return View(viewModel);
         }

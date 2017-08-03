@@ -1,0 +1,15 @@
+﻿@model RantApp.BLL.ViewModels.RantViewModel
+
+@using (Ajax.BeginForm("_WizardTitleScreen", "Rant", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "wizard-views" }))
+{
+    @Html.ValidationSummary("Please correct the following errors and try again.", new { @class = "text-danger" })
+
+    <div class="form-fields">
+        <p>I'm @Html.DropDownListFor(
+    m => m.Emotions.SelectedItemId,
+    Model.Emotions.EmotionItems, "Select your emotion...", new { id = "selected-item-id" })
+        @Html.TextBoxFor(m => m.CurrentRant.Title, new { id = "rant-title" })</p>
+    </div>
+    <br/>
+    <input c" type="submit" name="nextBtn" value='Next' />
+}

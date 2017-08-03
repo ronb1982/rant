@@ -1,0 +1,22 @@
+﻿@model RantApp.BLL.ViewModels.RantViewModel
+
+<h2>Your New Rant</h2>
+<p>Please see a summary of your rant below. You can click "Previous" to edit your rant before submitting.</p>
+
+@using (Ajax.BeginForm("_WizardSummary", "Rant", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "wizard-views" }))
+{
+    <div class="rant-summary">
+        <h4>What you are ranting about:</h4>
+        @Html.DisplayFor(m => m.CurrentRant.Title)
+        <hr />
+        <h4>Rant Details:</h4>
+        @Html.DisplayFor(m => m.CurrentRant.Description)
+        <hr />
+        <h4>How you expect your peers to respond:</h4>
+        @Html.DisplayFor(m => m.CurrentRant.ExpectedReactionRequest)
+    </div>
+
+    <p>If you are ready for the world to see your rant, click "DONE" below.</p>
+    <input type="submit" name="previousBtn" value="Previous" />
+    <input type="submit" name="doneBtn" value="DONE" />
+}

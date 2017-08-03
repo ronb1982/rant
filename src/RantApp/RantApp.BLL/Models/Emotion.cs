@@ -9,7 +9,6 @@ namespace RantApp.BLL.Models
 {
     public class Emotion
     {
-        [Required]
         public int EmotionId { get; set; }
         public string EmotionType { get; set; }
 

@@ -25,9 +25,6 @@ namespace RantApp.BLL.ViewModels
         public ICollection<Reaction> Reactions { get; set; }
         public EmotionListModel Emotions { get; set; }
 
-        // Current View reference
-        public string PartialViewName { get; set; }
-
         // Empty constructor
         public RantViewModel() {}
 
@@ -63,6 +60,11 @@ namespace RantApp.BLL.ViewModels
         public Rant GetRantById(int rantId)
         {
             return _readWriteRepository.GetById(rantId);
+        }
+
+        public void SaveRant(Rant rant)
+        {
+            _readWriteRepository.Add(rant);
         }
     }
 }

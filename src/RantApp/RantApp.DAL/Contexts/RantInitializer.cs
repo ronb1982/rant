@@ -41,7 +41,7 @@ namespace RantApp.DAL.Contexts
                     Title = string.Format("I'm {0} my current relationship.", emotions.FirstOrDefault(e => e.EmotionId == 2).EmotionType),
                     PostDate = new DateTime(2017, 7, 27, 20, 55, 44),
                     PictureUrl = "",
-                    Description = "Why isn't my relationship working out? I lived with my girlfriend for some many years!"
+                    Description = "Why isn't my relationship working out? I lived with my girlfriend for some many years!",
                 },
                 new Rant()
                 {

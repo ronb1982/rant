@@ -32,7 +32,7 @@ namespace RantApp.DAL.Repositories
             }
             catch (Exception e)
             {
-                Debug.Write(e.StackTrace);
+                Debug.Write(e.Message);
             }
         }
 
@@ -45,7 +45,7 @@ namespace RantApp.DAL.Repositories
             }
             catch (Exception e)
             {
-                Debug.Write(e.StackTrace);
+                Debug.Write(e.Message);
             }
         }
 
@@ -59,7 +59,7 @@ namespace RantApp.DAL.Repositories
             }
             catch (Exception e)
             {
-                Debug.Write(e.StackTrace);
+                Debug.Write(e.Message);
             }
 
             return rant;
@@ -74,7 +74,7 @@ namespace RantApp.DAL.Repositories
             }
             catch (Exception e)
             {
-                Debug.Write(e.StackTrace);
+                Debug.Write(e.Message);
             }
         }
 
